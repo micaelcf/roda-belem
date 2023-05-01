@@ -1,55 +1,25 @@
 <script lang="ts">
-	import { Bell, HeartHandshake, MapPin, Star } from 'lucide-svelte';
+	// The ordering of these imports is critical to your app working properly
+	import '@skeletonlabs/skeleton/themes/theme-crimson.css';
+	// If you have source.organizeImports set to true in VSCode, then it will auto change this ordering
+	import '@skeletonlabs/skeleton/styles/all.css';
+	// Most of your app wide CSS should be put in this file
 	import '../app.postcss';
-	import { App, Icon, Tabbar, TabbarLink } from 'konsta/svelte';
-	import { onMount } from 'svelte';
-	// import {activeTab } from '../lib/stores';
-	import { page } from '$app/stores';
-	import { afterNavigate } from '$app/navigation';
-
-	let activeTab = '/';
-	function setActiveTab() {
-		activeTab = $page.route.id as string;
-	}
-	afterNavigate(() => {
-		setActiveTab();
-	});
-
-	onMount(() => {
-		// setActiveTab();
-	});
+	import { AppShell } from '@skeletonlabs/skeleton';
+	import TabNav from '$lib/Components/TabNav.svelte';
 </script>
 
-<App theme="material" dark={false}>
+<!-- App Shell -->
+<AppShell>
+	<!-- <svelte:fragment slot="header">Header</svelte:fragment> -->
+	<!-- <svelte:fragment slot="sidebarLeft">Sidebar Left</svelte:fragment> -->
+	<!-- <svelte:fragment slot="sidebarRight">Sidebar Right</svelte:fragment> -->
+	<!-- <svelte:fragment slot="pageHeader">Page Header</svelte:fragment> -->
+	<!-- Router Slot -->
 	<slot />
-	<Tabbar labels={true} icons={true} class="left-0 bottom-0 fixed">
-		<TabbarLink href="/" active={activeTab === '/'} label="Explorar">
-			<svelte:fragment slot="icon">
-				<Icon>
-					<MapPin class="w-7 h-7" />
-				</Icon>
-			</svelte:fragment>
-		</TabbarLink>
-		<TabbarLink href="/favoritos" active={activeTab === '/favoritos'} label="Favoritos">
-			<svelte:fragment slot="icon">
-				<Icon>
-					<Star class="w-7 h-7" />
-				</Icon>
-			</svelte:fragment>
-		</TabbarLink>
-		<TabbarLink href="/ajudar" active={activeTab === '/ajudar'} label="Ajudar">
-			<svelte:fragment slot="icon">
-				<Icon>
-					<HeartHandshake class="w-7 h-7" />
-				</Icon>
-			</svelte:fragment>
-		</TabbarLink>
-		<TabbarLink href="notificacoes" active={activeTab === '/notificacoes'} label="Notificações">
-			<svelte:fragment slot="icon">
-				<Icon>
-					<Bell class="w-7 h-7" />
-				</Icon>
-			</svelte:fragment>
-		</TabbarLink>
-	</Tabbar>
-</App>
+	<!-- ---- / ---- -->
+	<!-- <svelte:fragment slot="pageFooter">Page Footer</svelte:fragment> -->
+	<svelte:fragment slot="footer">
+		<TabNav />
+	</svelte:fragment>
+</AppShell>
