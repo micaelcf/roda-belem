@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { GoogleMap } from '@capacitor/google-maps';
-	import { Geolocation } from '@capacitor/geolocation';
+	// import { GoogleMap } from '@capacitor/google-maps';
+	// import { Geolocation } from '@capacitor/geolocation';
 	import type { PageData } from './$types';
 	import { onMount } from 'svelte';
-	import { capacitorMap, mapLoaded } from '$lib/stores';
+	// import { capacitorMap, mapLoaded } from '$lib/stores';
 
 	export let data: PageData;
 
