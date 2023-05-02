@@ -12,8 +12,11 @@
 		"format": "prettier --plugin-search-dir . --write ."
 	},
 	"devDependencies": {
+		"@capacitor/cli": "^4.8.0",
 		"@skeletonlabs/skeleton": "^1.2.5",
 		"@sveltejs/adapter-auto": "^2.0.0",
+		"@sveltejs/adapter-static": "^2.0.2",
+		"@sveltejs/adapter-vercel": "^2.4.3",
 		"@sveltejs/kit": "^1.5.0",
 		"@tailwindcss/forms": "^0.5.3",
 		"@typescript-eslint/eslint-plugin": "^5.45.0",
@@ -35,6 +38,12 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@capacitor/android": "^4.8.0",
+		"@capacitor/core": "^4.8.0",
+		"@capacitor/geolocation": "^4.1.0",
+		"@capacitor/google-maps": "^4.5.0",
+		"@capacitor/ios": "^4.8.0",
+		"@types/google.maps": "^3.52.6",
 		"lucide-svelte": "^0.190.0"
 	}
 }

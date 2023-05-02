@@ -1,4 +1,6 @@
-import adapter from '@sveltejs/adapter-auto';
+// toggle comment bellow to deploy for vercel
+// import adapter from '@sveltejs/adapter-vercel'
+import adapter from '@sveltejs/adapter-static';
 import { vitePreprocess } from '@sveltejs/kit/vite';
 
 /** @type {import('@sveltejs/kit').Config} */

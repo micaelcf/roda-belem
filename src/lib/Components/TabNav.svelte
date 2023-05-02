@@ -1,52 +1,49 @@
 <script lang="ts">
 	import { Tab, TabGroup } from '@skeletonlabs/skeleton';
-	import Icon from './Icon.svelte';
 	import { Bell, HeartHandshake, MapPin, Star } from 'lucide-svelte';
+	import Icon from './Icon.svelte';
+	import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
 
-	let tabs: Element[] = [];
+	let tabs = '/';
+	// console.log(Ripple);
+
+	let handlerClick = (e: MouseEvent) => {
+		goto((e.target as HTMLInputElement).value);
+	};
 </script>
 
 <TabGroup
-	justify="justify-center"
+	justify="justify-between"
 	active="variant-filled-primary"
 	hover="hover:variant-soft-primary"
 	flex="flex-1 lg:flex-none"
 	rounded=""
 	border=""
-	class="w-full bg-surface-100-800-token"
+	class="w-full bg-surface-100-800-token md:px-10"
 >
-	<TabGroup
-		justify="justify-center"
-		active="variant-filled-primary"
-		hover="hover:variant-soft-primary"
-		flex="flex-1 lg:flex-none"
-		rounded=""
-		border=""
-		class="w-full bg-surface-100-800-token"
-	>
-		<Tab bind:group={tabs} name="explorar" value={0}>
-			<svelte:fragment slot="lead">
-				<div class="mx-auto w-fit"><Icon icon={MapPin} /></div>
-			</svelte:fragment>
-			Explorar
-		</Tab>
-		<Tab bind:group={tabs} name="favoritos" value={1}>
-			<svelte:fragment slot="lead">
-				<div class="mx-auto w-fit"><Icon icon={Star} /></div>
-			</svelte:fragment>
-			Favoritos
-		</Tab>
-		<Tab bind:group={tabs} name="ajudar" value={2}>
-			<svelte:fragment slot="lead">
-				<div class="mx-auto w-fit"><Icon icon={HeartHandshake} /></div>
-			</svelte:fragment>
-			Ajudar
-		</Tab>
-		<Tab bind:group={tabs} name="notificacoes" value={3}>
-			<svelte:fragment slot="lead">
-				<div class="mx-auto w-fit"><Icon icon={Bell} /></div>
-			</svelte:fragment>
-			Notificações
-		</Tab>
-	</TabGroup>
+	<Tab bind:group={tabs} on:click={handlerClick} name="explorar" value="/">
+		<svelte:fragment slot="lead">
+			<div class="mx-auto w-fit"><Icon icon={MapPin} /></div>
+		</svelte:fragment>
+		Explorar
+	</Tab>
+	<Tab bind:group={tabs} on:click={handlerClick} name="favoritos" value="favoritos">
+		<svelte:fragment slot="lead">
+			<div class="mx-auto w-fit"><Icon icon={Star} /></div>
+		</svelte:fragment>
+		Favoritos
+	</Tab>
+	<Tab bind:group={tabs} on:click={handlerClick} name="ajudar" value="ajudar">
+		<svelte:fragment slot="lead">
+			<div class="mx-auto w-fit"><Icon icon={HeartHandshake} /></div>
+		</svelte:fragment>
+		Ajudar
+	</Tab>
+	<Tab bind:group={tabs} on:click={handlerClick} name="notificacoes" value="notificacoes">
+		<svelte:fragment slot="lead">
+			<div class="mx-auto w-fit"><Icon icon={Bell} /></div>
+		</svelte:fragment>
+		Notificações
+	</Tab>
 </TabGroup>
