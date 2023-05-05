@@ -6,6 +6,7 @@
 	import { page } from '$app/stores';
 	import ripple from 'ripple-effects';
 	import { query_selector_all } from 'svelte/internal';
+	import Ripple from './Ripple.svelte';
 
 	$: tabs = $page.route.id?.length === 1 ? '/' : $page.route.id?.replace('/', '');
 	// console.log(Ripple);
@@ -24,40 +25,54 @@
 	border=""
 	class="w-full bg-surface-100-800-token md:px-10"
 >
-	<Tab bind:group={tabs} on:click={handlerClick} name="explorar" value="/" class=" select-none">
-		<svelte:fragment slot="lead">
-			<div class="mx-auto w-fit"><Icon icon={MapPin} /></div>
-		</svelte:fragment>
-		<span class="text-sm">Explorar</span>
-	</Tab>
-	<Tab
-		bind:group={tabs}
-		on:click={handlerClick}
-		name="favoritos"
-		value="favoritos"
-		class="select-none"
-	>
-		<svelte:fragment slot="lead">
-			<div class="mx-auto w-fit"><Icon icon={Star} /></div>
-		</svelte:fragment>
-		<span class="text-sm">Favoritos</span>
-	</Tab>
-	<Tab bind:group={tabs} on:click={handlerClick} name="ajudar" value="ajudar" class=" select-none">
-		<svelte:fragment slot="lead">
-			<div class="mx-auto w-fit"><Icon icon={HeartHandshake} /></div>
-		</svelte:fragment>
-		<span class="text-sm">Ajudar</span>
-	</Tab>
-	<Tab
-		bind:group={tabs}
-		on:click={handlerClick}
-		name="notificações"
-		value="notificacoes"
-		class=" select-none"
-	>
-		<svelte:fragment slot="lead">
-			<div class="mx-auto w-fit"><Icon icon={Bell} /></div>
-		</svelte:fragment>
-		<span class="text-sm">Notificações</span>
-	</Tab>
+	<Ripple>
+		<Tab bind:group={tabs} on:click={handlerClick} name="explorar" value="/" class=" select-none">
+			<svelte:fragment slot="lead">
+				<div class="mx-auto w-fit"><Icon icon={MapPin} /></div>
+			</svelte:fragment>
+			<span class="text-sm">Explorar</span>
+		</Tab>
+	</Ripple>
+	<Ripple>
+		<Tab
+			bind:group={tabs}
+			on:click={handlerClick}
+			name="favoritos"
+			value="favoritos"
+			class="select-none"
+		>
+			<svelte:fragment slot="lead">
+				<div class="mx-auto w-fit"><Icon icon={Star} /></div>
+			</svelte:fragment>
+			<span class="text-sm">Favoritos</span>
+		</Tab>
+	</Ripple>
+	<Ripple>
+		<Tab
+			bind:group={tabs}
+			on:click={handlerClick}
+			name="ajudar"
+			value="ajudar"
+			class=" select-none"
+		>
+			<svelte:fragment slot="lead">
+				<div class="mx-auto w-fit"><Icon icon={HeartHandshake} /></div>
+			</svelte:fragment>
+			<span class="text-sm">Ajudar</span>
+		</Tab>
+	</Ripple>
+	<Ripple>
+		<Tab
+			bind:group={tabs}
+			on:click={handlerClick}
+			name="notificações"
+			value="notificacoes"
+			class=" select-none"
+		>
+			<svelte:fragment slot="lead">
+				<div class="mx-auto w-fit"><Icon icon={Bell} /></div>
+			</svelte:fragment>
+			<span class="text-sm">Notificações</span>
+		</Tab>
+	</Ripple>
 </TabGroup>

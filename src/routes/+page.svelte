@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { capacitorMap, mapLoaded } from '$lib/stores';
+	import SearchInput from '$lib/Components/SearchInput.svelte';
 
 	// export let data: PageData;
 
@@ -18,10 +19,10 @@
 			zoom: 15,
 			mapTypeControl: false,
 			fullscreenControl: false,
-			streetViewControl: false,
+			streetViewControl: false
 		});
 		mapLoaded.set(true);
-		console.log("map loaded")
+		console.log('map loaded');
 	};
 
 	const positionHandler = async (position: GeolocationPosition) => {
@@ -51,26 +52,19 @@
 	};
 
 	onMount(async () => {
-		if(!$mapLoaded) {
+		if (!$mapLoaded) {
 			navigator.geolocation.getCurrentPosition(positionHandler);
-		}else{
+		} else {
 			mapContainer.append($capacitorMap);
-			addMarker()
+			addMarker();
 		}
 	});
+
+	let searchValue: string;
+	// $: console.log(searchValue);
 </script>
 
-<!-- toggle comment for web implementation -->
-
-
-<div bind:this={mapContainer} class="w-full h-full bg-yellow-200" >
-	<!-- <capacitor-google-map id="map"></capacitor-google-map> -->
+<div bind:this={mapContainer} class="w-full h-full bg-yellow-200" />
+<div class="fixed top-10 w-full flex items-center justify-center">
+	<SearchInput bind:value={searchValue} />
 </div>
-
-<!-- <style>
-	capacitor-google-map {
-		display: inline-block;
-		width: 100%;
-		height: 100%;
-	}
-</style> -->
