@@ -6,4 +6,4 @@ include ':capacitor-geolocation'
 project(':capacitor-geolocation').projectDir = new File('../node_modules/.pnpm/@capacitor+geolocation@4.1.0_@capacitor+core@4.8.0/node_modules/@capacitor/geolocation/android')
 
 include ':capacitor-google-maps'
-project(':capacitor-google-maps').projectDir = new File('../node_modules/.pnpm/@capacitor+google-maps@4.5.0_@capacitor+core@4.8.0/node_modules/@capacitor/google-maps/android')
+project(':capacitor-google-maps').projectDir = new File('../node_modules/.pnpm/@capacitor+google-maps@4.5.1_@capacitor+core@4.8.0/node_modules/@capacitor/google-maps/android')

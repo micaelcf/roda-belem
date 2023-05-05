@@ -7,7 +7,21 @@
 	import '../app.postcss';
 	import { AppShell } from '@skeletonlabs/skeleton';
 	import TabNav from '$lib/Components/TabNav.svelte';
+	import type { LayoutData } from './$types';
+
+	export let data: LayoutData;
 </script>
+
+<svelte:head>
+	<script>
+		function initMap() {}
+	</script>
+	<script
+		async
+		src="https://maps.googleapis.com/maps/api/js?v=beta&key={data.mapApiKey}&callback=initMap"
+	>
+	</script>
+</svelte:head>
 
 <!-- App Shell -->
 <AppShell>

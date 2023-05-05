@@ -4,7 +4,7 @@ const config: CapacitorConfig = {
   appId: 'com.rodabelem.app',
   appName: 'Roda Belém',
   webDir: './build',
-  bundledWebRuntime: false
+  bundledWebRuntime: false,
 };
 
 export default config;

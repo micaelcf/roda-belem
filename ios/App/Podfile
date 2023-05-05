@@ -12,7 +12,7 @@ def capacitor_pods
   pod 'Capacitor', :path => '../../node_modules/.pnpm/@capacitor+ios@4.8.0_@capacitor+core@4.8.0/node_modules/@capacitor/ios'
   pod 'CapacitorCordova', :path => '../../node_modules/.pnpm/@capacitor+ios@4.8.0_@capacitor+core@4.8.0/node_modules/@capacitor/ios'
   pod 'CapacitorGeolocation', :path => '../../node_modules/.pnpm/@capacitor+geolocation@4.1.0_@capacitor+core@4.8.0/node_modules/@capacitor/geolocation'
-  pod 'CapacitorGoogleMaps', :path => '../../node_modules/.pnpm/@capacitor+google-maps@4.5.0_@capacitor+core@4.8.0/node_modules/@capacitor/google-maps'
+  pod 'CapacitorGoogleMaps', :path => '../../node_modules/.pnpm/@capacitor+google-maps@4.5.1_@capacitor+core@4.8.0/node_modules/@capacitor/google-maps'
 end
 
 target 'App' do
