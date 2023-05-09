@@ -2,9 +2,4 @@
 	export let value: string;
 </script>
 
-<input
-	type="search"
-	class="w-full max-w-md bg-surface-100-800-token mx-8 md:mx-0"
-	placeholder="Search"
-	bind:value
-/>
+<input type="search" class=" input w-full max-w-md mx-8 md:mx-0" placeholder="Search" bind:value />

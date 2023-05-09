@@ -17,62 +17,69 @@
 </script>
 
 <TabGroup
-	justify="justify-between"
-	active="variant-filled-primary"
-	hover="hover:variant-soft-primary"
+	justify=""
+	hover="hover:variant-soft-secondary"
 	flex="flex-1 lg:flex-none"
 	rounded=""
 	border=""
-	class="w-full bg-surface-100-800-token md:px-10"
+	class="w-full bg-surface-100-800-token md:px-10 transition-colors duration-[600ms] ease-in-out"
 >
-	<Ripple>
-		<Tab bind:group={tabs} on:click={handlerClick} name="explorar" value="/" class=" select-none">
-			<svelte:fragment slot="lead">
-				<div class="mx-auto w-fit"><Icon icon={MapPin} /></div>
-			</svelte:fragment>
-			<span class="text-sm">Explorar</span>
-		</Tab>
-	</Ripple>
-	<Ripple>
-		<Tab
-			bind:group={tabs}
-			on:click={handlerClick}
-			name="favoritos"
-			value="favoritos"
-			class="select-none"
-		>
-			<svelte:fragment slot="lead">
-				<div class="mx-auto w-fit"><Icon icon={Star} /></div>
-			</svelte:fragment>
-			<span class="text-sm">Favoritos</span>
-		</Tab>
-	</Ripple>
-	<Ripple>
-		<Tab
-			bind:group={tabs}
-			on:click={handlerClick}
-			name="ajudar"
-			value="ajudar"
-			class=" select-none"
-		>
-			<svelte:fragment slot="lead">
-				<div class="mx-auto w-fit"><Icon icon={HeartHandshake} /></div>
-			</svelte:fragment>
-			<span class="text-sm">Ajudar</span>
-		</Tab>
-	</Ripple>
-	<Ripple>
-		<Tab
-			bind:group={tabs}
-			on:click={handlerClick}
-			name="notificações"
-			value="notificacoes"
-			class=" select-none"
-		>
-			<svelte:fragment slot="lead">
-				<div class="mx-auto w-fit"><Icon icon={Bell} /></div>
-			</svelte:fragment>
-			<span class="text-sm">Notificações</span>
-		</Tab>
-	</Ripple>
+	<div class="w-full">
+		<Ripple>
+			<Tab bind:group={tabs} on:click={handlerClick} name="explorar" value="/" class="select-none">
+				<svelte:fragment slot="lead">
+					<div class="mx-auto w-fit"><Icon icon={MapPin} /></div>
+				</svelte:fragment>
+				<span class="text-sm">Explorar</span>
+			</Tab>
+		</Ripple>
+	</div>
+	<div class="w-full">
+		<Ripple>
+			<Tab
+				bind:group={tabs}
+				on:click={handlerClick}
+				name="favoritos"
+				value="favoritos"
+				class="select-none"
+			>
+				<svelte:fragment slot="lead">
+					<div class="mx-auto w-fit"><Icon icon={Star} /></div>
+				</svelte:fragment>
+				<span class="text-sm">Favoritos</span>
+			</Tab>
+		</Ripple>
+	</div>
+	<div class="w-full">
+		<Ripple>
+			<Tab
+				bind:group={tabs}
+				on:click={handlerClick}
+				name="ajudar"
+				value="ajudar"
+				class=" select-none"
+			>
+				<svelte:fragment slot="lead">
+					<div class="mx-auto w-fit"><Icon icon={HeartHandshake} /></div>
+				</svelte:fragment>
+				<span class="text-sm">Ajudar</span>
+			</Tab>
+		</Ripple>
+	</div>
+	<div class="w-full">
+		<Ripple>
+			<Tab
+				bind:group={tabs}
+				on:click={handlerClick}
+				name="notificações"
+				value="notificacoes"
+				class=" select-none"
+			>
+				<svelte:fragment slot="lead">
+					<div class="mx-auto w-fit"><Icon icon={Bell} /></div>
+				</svelte:fragment>
+				<span class="text-sm">Notificações</span>
+			</Tab>
+		</Ripple>
+	</div>
 </TabGroup>

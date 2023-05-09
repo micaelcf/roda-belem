@@ -7,9 +7,11 @@
 	import '../app.postcss';
 	import { AppShell } from '@skeletonlabs/skeleton';
 	import TabNav from '$lib/Components/TabNav.svelte';
-	import type { LayoutData } from './$types';
+	import type { LayoutServerData } from './$types';
 
-	export let data: LayoutData;
+	export let data: LayoutServerData;
+
+	// $: console.log($page.url.pathname);
 </script>
 
 <svelte:head>
