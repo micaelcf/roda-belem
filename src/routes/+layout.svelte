@@ -7,9 +7,9 @@
 	import '../app.postcss';
 	import { AppShell } from '@skeletonlabs/skeleton';
 	import TabNav from '$lib/Components/TabNav.svelte';
-	import type { LayoutServerData } from './$types';
+	import type { LayoutData } from './$types';
 
-	export let data: LayoutServerData;
+	export let data: LayoutData;
 
 	// $: console.log($page.url.pathname);
 </script>
