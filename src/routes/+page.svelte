@@ -106,6 +106,7 @@
 	});
 
 	let searchValue: string;
+	let accessibilityFilters: string;
 </script>
 
 <div bind:this={mapContainer} class="w-full h-full">
@@ -132,5 +133,5 @@
 </button>
 
 <div class="fixed top-10 w-full flex items-center justify-center">
-	<SearchInput bind:value={searchValue} />
+	<SearchInput bind:value={searchValue} bind:accessibilityFilters />
 </div>

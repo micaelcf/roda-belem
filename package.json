@@ -46,6 +46,7 @@
 		"flowbite": "^1.6.6",
 		"flowbite-svelte": "^0.39.1",
 		"lucide-svelte": "^0.256.0",
+		"notyf": "^3.10.0",
 		"tailwind-merge": "^1.13.2"
 	}
 }

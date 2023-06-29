@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { Button, Radio, Search } from 'flowbite-svelte';
+	import { Badge, Button, Radio, Search } from 'flowbite-svelte';
 	import { PersonStanding, Search as SI } from 'lucide-svelte';
 
 	export let value: string;
-	export let accessibilityFilters: string[];
+	export let accessibilityFilters: string;
 
 	const accessibilityFeatures = [
 		'Ramp',
@@ -57,6 +57,7 @@
 				>
 					<PersonStanding size="30" />
 					<div class="w-full text-sm font-semibold">{af}</div>
+					<!-- <Badge href="/">Badge link</Badge> -->
 				</div>
 			</Radio>
 		{/each}

@@ -16,6 +16,6 @@
 	</script>
 </svelte:head>
 
-<slot />
+<div><slot /></div>
 
 <TabNav />
