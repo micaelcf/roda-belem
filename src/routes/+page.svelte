@@ -3,10 +3,8 @@
 	import { elementMapStore, mapLoaded, currPosition, mapStore } from '$lib/stores';
 	import SearchInput from '$lib/Components/SearchInput.svelte';
 	import { Geolocation, type PermissionStatus, type Position } from '@capacitor/geolocation';
-	import WheelLoader from '$lib/Components/WheelLoader.svelte';
+	import WheelLoader from '$lib/Components/Wheel.svelte';
 	import { Minus, Plus } from 'lucide-svelte';
-	import ripple from 'ripple-effects';
-	import Ripple from '$lib/Components/Ripple.svelte';
 
 	let mapContainer: Element;
 
@@ -121,14 +119,14 @@
 
 <button
 	on:click={() => increaseZoom($mapStore)}
-	class="btn-icon btn-icon-lg variant-filled-primary w-fit absolute right-3 bottom-36"
+	class="bg-primary-300 absolute rounded-tr-xl rounded-bl-xl right-3 bottom-36"
 >
 	<Plus size="40" />
 </button>
 
 <button
 	on:click={() => decreaseZoom($mapStore)}
-	class="btn-icon btn-icon-lg variant-filled-primary w-fit absolute right-3 bottom-24"
+	class="bg-primary-300 absolute rounded-tr-xl rounded-bl-xl right-3 bottom-24"
 >
 	<Minus size="40" />
 </button>

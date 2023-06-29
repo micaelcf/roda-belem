@@ -1,85 +1,68 @@
 <script lang="ts">
-	import { Tab, TabGroup } from '@skeletonlabs/skeleton';
-	import { Bell, HeartHandshake, MapPin, Star } from 'lucide-svelte';
-	import Icon from './Icon.svelte';
-	import { goto } from '$app/navigation';
+	import { MapPin, Plus, User2, Heart } from 'lucide-svelte';
+	import { BottomNav, BottomNavItem, Tooltip } from 'flowbite-svelte';
 	import { page } from '$app/stores';
-	import ripple from 'ripple-effects';
-	import { query_selector_all } from 'svelte/internal';
-	import Ripple from './Ripple.svelte';
+	import { goto } from '$app/navigation';
 
 	$: tabs = $page.route.id?.length === 1 ? '/' : $page.route.id?.replace('/', '');
-	// console.log(Ripple);
 
 	let handlerClick = (e: MouseEvent) => {
 		goto((e.target as HTMLInputElement).value);
+		console.log(tabs);
 	};
+
+	// let activeClass = `bg-primary-600 text-white`;
 </script>
 
-<TabGroup
-	justify=""
-	hover="hover:variant-soft-secondary"
-	flex="flex-1 lg:flex-none"
-	rounded=""
-	border=""
-	class="w-full bg-surface-100-800-token md:px-10 transition-colors duration-[600ms] ease-in-out"
->
-	<div class="w-full">
-		<Ripple>
-			<Tab bind:group={tabs} on:click={handlerClick} name="explorar" value="/" class="select-none">
-				<svelte:fragment slot="lead">
-					<div class="mx-auto w-fit"><Icon icon={MapPin} /></div>
-				</svelte:fragment>
-				<span class="text-sm">Explorar</span>
-			</Tab>
-		</Ripple>
+<BottomNav position="absolute" navType="application" classInner="grid-cols-4">
+	<BottomNavItem
+		on:click={handlerClick}
+		bind:group={tabs}
+		value="/"
+		btnName="Explorar"
+		active={tabs == '/'}
+		appBtnPosition="left"
+	>
+		<MapPin size="36" pointer-events="none" />
+		<Tooltip arrow={false}>Explorar</Tooltip>
+	</BottomNavItem>
+	<BottomNavItem
+		bind:group={tabs}
+		on:click={handlerClick}
+		btnName="Favoritos"
+		value="favoritos"
+		active={tabs == 'favoritos'}
+		appBtnPosition="middle"
+	>
+		<Heart size="36" pointer-events="none" />
+		<Tooltip arrow={false}>Favoritos</Tooltip>
+	</BottomNavItem>
+	<BottomNavItem
+		bind:group={tabs}
+		on:click={handlerClick}
+		btnName="Perfil"
+		value="perfil"
+		active={tabs == 'perfil'}
+		appBtnPosition="middle"
+	>
+		<User2 size="36" pointer-events="none" />
+		<Tooltip arrow={false}>Perfil</Tooltip>
+	</BottomNavItem>
+	<div class="flex items-center justify-center">
+		<BottomNavItem
+			bind:group={tabs}
+			on:click={handlerClick}
+			btnName="Nova contribuição"
+			value="add"
+			active={tabs == 'add'}
+			appBtnPosition="right"
+			btnClass="inline-flex items-center justify-center w-full h-full font-medium bg-primary-600 rounded-full focus:outline-none active:outline-none hover:bg-primary-700"
+		>
+			<Plus size="40" pointer-events="none" />
+			<Tooltip arrow={false}>Create new item</Tooltip>
+		</BottomNavItem>
 	</div>
-	<div class="w-full">
-		<Ripple>
-			<Tab
-				bind:group={tabs}
-				on:click={handlerClick}
-				name="favoritos"
-				value="favoritos"
-				class="select-none"
-			>
-				<svelte:fragment slot="lead">
-					<div class="mx-auto w-fit"><Icon icon={Star} /></div>
-				</svelte:fragment>
-				<span class="text-sm">Favoritos</span>
-			</Tab>
-		</Ripple>
-	</div>
-	<div class="w-full">
-		<Ripple>
-			<Tab
-				bind:group={tabs}
-				on:click={handlerClick}
-				name="ajudar"
-				value="ajudar"
-				class=" select-none"
-			>
-				<svelte:fragment slot="lead">
-					<div class="mx-auto w-fit"><Icon icon={HeartHandshake} /></div>
-				</svelte:fragment>
-				<span class="text-sm">Ajudar</span>
-			</Tab>
-		</Ripple>
-	</div>
-	<div class="w-full">
-		<Ripple>
-			<Tab
-				bind:group={tabs}
-				on:click={handlerClick}
-				name="notificações"
-				value="notificacoes"
-				class=" select-none"
-			>
-				<svelte:fragment slot="lead">
-					<div class="mx-auto w-fit"><Icon icon={Bell} /></div>
-				</svelte:fragment>
-				<span class="text-sm">Notificações</span>
-			</Tab>
-		</Ripple>
-	</div>
-</TabGroup>
+</BottomNav>
+<!-- <div class="w-fit h-fit flex items-center justify-center absolute top-[calc(50%-2.5rem)]">
+	<Plus size="64" pointer-events="none" />
+</div> -->

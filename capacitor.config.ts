@@ -1,10 +1,12 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.rodabelem.app',
-  appName: 'Roda Belém',
-  webDir: './build',
-  bundledWebRuntime: false,
+  appId: 'br.com.rodabelem',
+  appName: 'Roda Belém Sua escolha de acessibilidade',
+  webDir: 'dist',
+  server: {
+    androidScheme: 'https'
+  }
 };
 
 export default config;

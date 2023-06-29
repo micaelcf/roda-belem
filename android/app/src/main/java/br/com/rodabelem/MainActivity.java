@@ -1,4 +1,4 @@
-package com.rodabelem.app;
+package br.com.rodabelem;
 
 import com.getcapacitor.BridgeActivity;
 

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">Roda Belém</string>
-    <string name="title_activity_main">Roda Belém</string>
-    <string name="package_name">com.rodabelem.app</string>
-    <string name="custom_url_scheme">com.rodabelem.app</string>
+    <string name="app_name">Roda Belém Sua escolha de acessibilidade</string>
+    <string name="title_activity_main">Roda Belém Sua escolha de acessibilidade</string>
+    <string name="package_name">br.com.rodabelem</string>
+    <string name="custom_url_scheme">br.com.rodabelem</string>
 </resources>
