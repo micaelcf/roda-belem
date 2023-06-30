@@ -40,6 +40,8 @@
 		"@capacitor/geolocation": "^5.0.4",
 		"@capacitor/ios": "^5.0.5",
 		"@popperjs/core": "^2.11.8",
+		"@sveltejs/adapter-static": "^2.0.2",
+		"@sveltejs/adapter-vercel": "^3.0.1",
 		"@types/animejs": "^3.1.7",
 		"@types/google.maps": "^3.53.4",
 		"animejs": "^3.2.1",

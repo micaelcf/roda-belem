@@ -42,7 +42,7 @@
 </script>
 
 <!-- <input type="search" class=" input w-full max-w-md mx-8 md:mx-0" placeholder="Search" bind:value /> -->
-<form class="flex flex-col items-center gap-2">
+<form class="flex flex-col items-center gap-2 h-fit">
 	<div class="flex gap-2">
 		<Search size="lg" bind:value placeholder="Procure um lugar..." />
 		<Button class="!p-2.5 active:outline-none focus:outline-none">

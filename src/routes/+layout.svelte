@@ -19,6 +19,8 @@
 	</script>
 </svelte:head>
 
-<div><slot /></div>
+<main class="h-full w-full overflow-hidden">
+	<slot />
+</main>
 
 <TabNav />

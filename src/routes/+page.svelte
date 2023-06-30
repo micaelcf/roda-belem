@@ -131,7 +131,7 @@
 	let accessibilityFilters: string;
 </script>
 
-<div bind:this={mapContainer} class="w-full h-full">
+<div bind:this={mapContainer} class="w-full h-full absolute">
 	{#if !$mapLoaded}
 		<div class=" absolute top-[calc(50%-2.5rem)] w-full flex flex-col items-center">
 			<div class="w-16 h-16"><WheelLoader /></div>
