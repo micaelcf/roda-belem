@@ -5,8 +5,10 @@
 	import { Geolocation, type PermissionStatus, type Position } from '@capacitor/geolocation';
 	import WheelLoader from '$lib/Components/Wheel.svelte';
 	import { Minus, Plus } from 'lucide-svelte';
+	// import { getNearbyPlaces, type Place } from '$lib/api/places';
 
 	let mapContainer: Element;
+	// let places: Place[];
 
 	const defaultPosition: Position = {
 		coords: {
@@ -20,6 +22,12 @@
 		},
 		timestamp: 0
 	};
+	type Marker = {
+		lat: number;
+		lng: number;
+		name: string;
+		icon: string;
+	};
 
 	// web implementation
 
@@ -30,32 +38,28 @@
 			center: coords,
 			zoom: 17,
 			disableDefaultUI: true
-			// mapTypeControl: false,
-			// fullscreenControl: false,
-			// streetViewControl: false,
-			// zoomControl: false
 		});
 		mapStore.set(map);
 		mapLoaded.set(true);
 		console.log('map loaded');
 	};
 
-	const addMarker = async () => {
+	const addMarker = async (marker: Marker) => {
 		const iconWidth = 'w-10';
 		const iconSVG = `<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin ${iconWidth}" xmlns="http://www.w3.org/2000/svg"><defs></defs><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" style="fill: rgb(38, 138, 204); stroke: none;"></path><circle cx="12" cy="10" r="3" style="stroke: none; fill: rgb(0, 0, 0);"></circle></svg>`;
 		const mapIcon = new DOMParser().parseFromString(iconSVG, 'image/svg+xml').documentElement;
-		const marker = document.createElement('div');
-		marker.className = 'flex flex-col justify-center items-center text-black text-xl';
-		marker.innerHTML = 'Você';
-		marker.appendChild(mapIcon);
+		const markerEl = document.createElement('div');
+		markerEl.className = 'flex flex-col justify-center items-center text-black text-xl';
+		markerEl.innerHTML = 'Você';
+		markerEl.appendChild(mapIcon);
 		//@ts-ignore
 		const { AdvancedMarkerView } = await google.maps.importLibrary('marker');
 		//@ts-ignore
 		new google.maps.marker.AdvancedMarkerView({
 			map: $mapStore,
-			position: $mapStore?.getCenter(),
-			title: 'Você está aqui!',
-			content: marker
+			position: { lat: marker.lat, lng: marker.lng },
+			title: marker.name,
+			content: markerEl
 		});
 	};
 
@@ -72,7 +76,25 @@
 			lat: position.coords.latitude,
 			lng: position.coords.longitude
 		});
-		addMarker();
+		let myMarker: Marker = {
+			lat: position.coords.latitude,
+			lng: position.coords.longitude,
+			name: 'Você está aqui',
+			icon: ''
+		};
+		addMarker(myMarker);
+		// getNearbyPlaces(position.coords.latitude, position.coords.longitude, 5000, true).then(
+		// 	(places) => {
+		// 		places.forEach((place) => {
+		// 			addMarker({
+		// 				lat: place.latitude,
+		// 				lng: place.longitude,
+		// 				name: place.name,
+		// 				icon: ''
+		// 			});
+		// 		});
+		// 	}
+		// );
 	};
 
 	const handlerPermissions = async (status: PermissionStatus) => {
@@ -133,5 +155,5 @@
 </button>
 
 <div class="fixed top-10 w-full flex items-center justify-center">
-	<SearchInput bind:value={searchValue} bind:accessibilityFilters />
+	<SearchInput bind:value={searchValue} bind:accessibilityFilter={accessibilityFilters} />
 </div>
