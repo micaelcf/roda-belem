@@ -3,9 +3,9 @@
 	import { MapPin, Heart, Plus, PersonStanding } from 'lucide-svelte';
 	import '../app.postcss';
 	import TabNav from '$lib/Components/TabNav.svelte';
-	import type { LayoutData } from './$types';
+	import type { LayoutServerData } from './$types';
 
-	export let data: LayoutData;
+	export let data: LayoutServerData;
 </script>
 
 <svelte:head>

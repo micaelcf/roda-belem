@@ -65,7 +65,6 @@
 				addMarker(marker);
 			});
 		}
-		console.log(places);
 	}
 
 	const initMap = async (coords: { lat: number; lng: number }) => {
@@ -211,8 +210,8 @@
 		const dist = distGeographicTwoPoints({ lat: north, lng: west }, { lat: south, lng: east });
 		radiusStore.set(Math.ceil(dist));
 		const center = $mapStore?.getCenter();
-		console.log(center?.toJSON());
-		console.log($radiusStore);
+		// console.log(center?.toJSON());
+		// console.log($radiusStore);
 		await refreshNearby({ lat: center?.lat() as number, lng: center?.lng() as number });
 	};
 
