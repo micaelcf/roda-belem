@@ -11,7 +11,7 @@
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
 		"format": "prettier --plugin-search-dir . --write .",
 		"update-app": "vite build && cap sync",
-		"start-node": "node build"
+		"start-node": "node -r dotenv/config build"
 	},
 	"devDependencies": {
 		"@capacitor/cli": "^5.0.5",
@@ -45,6 +45,7 @@
 		"@types/animejs": "^3.1.7",
 		"@types/google.maps": "^3.53.4",
 		"animejs": "^3.2.1",
+		"dotenv": "^16.3.1",
 		"flowbite": "^1.6.6",
 		"flowbite-svelte": "^0.39.1",
 		"lucide-svelte": "^0.256.0",
