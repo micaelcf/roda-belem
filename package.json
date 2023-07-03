@@ -10,11 +10,13 @@
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
 		"format": "prettier --plugin-search-dir . --write .",
-		"update-app": "vite build && cap sync"
+		"update-app": "vite build && cap sync",
+		"start-node": "node build"
 	},
 	"devDependencies": {
 		"@capacitor/cli": "^5.0.5",
 		"@sveltejs/adapter-auto": "^2.1.0",
+		"@sveltejs/adapter-node": "^1.3.0",
 		"@sveltejs/kit": "^1.21.0",
 		"@typescript-eslint/eslint-plugin": "^5.60.1",
 		"@typescript-eslint/parser": "^5.60.1",
@@ -40,8 +42,6 @@
 		"@capacitor/geolocation": "^5.0.4",
 		"@capacitor/ios": "^5.0.5",
 		"@popperjs/core": "^2.11.8",
-		"@sveltejs/adapter-static": "^2.0.2",
-		"@sveltejs/adapter-vercel": "^3.0.1",
 		"@types/animejs": "^3.1.7",
 		"@types/google.maps": "^3.53.4",
 		"animejs": "^3.2.1",
