@@ -25,10 +25,21 @@ export async function addFavorite(userId: string, placeId: string, token: string
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`
+      'Authorization': `${token}`
     }
   })
   return req.ok
+}
+
+export async function getFavorites(userId: string, token: string): Promise<string[]> {
+  const req = await fetch(`${baseUrl}/users/favorite?userId=${userId}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `${token}`
+    }
+  })
+  return await req.json()
 }
 
 export async function deleteFavorite(userId: string, placeId: string, token: string): Promise<boolean> {
@@ -36,7 +47,7 @@ export async function deleteFavorite(userId: string, placeId: string, token: str
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`
+      'Authorization': `${token}`
     }
   })
   return req.ok
@@ -47,7 +58,7 @@ export async function updateUserPointsByUserId(userId: string, points: number, t
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`
+      'Authorization': `${token}`
     }
   })
   return req.ok
@@ -68,4 +79,23 @@ export async function createUser(user: User): Promise<boolean> {
     body: JSON.stringify(data)
   })
   return req.ok
+}
+
+export async function login(user: User) {
+  const data = {
+    email: user.email,
+    password: user.password
+  }
+
+  const req = await fetch(`${baseUrl}/users/login`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+  if(req.headers.get('Authorization')){
+    return req.headers.get('Authorization')
+  }
+  return ""
 }

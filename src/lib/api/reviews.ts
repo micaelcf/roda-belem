@@ -38,7 +38,7 @@ export async function createReview(review: Review, token: string): Promise<boole
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`
+      'Authorization': `${token}`
     },
       body: JSON.stringify(data)
     }
@@ -64,14 +64,26 @@ export async function findReviewByUserId(userId: string, token: string): Promise
   return res 
 }
 
-export async function deleteReviewById(id: string, token: string): Promise<void> {
-  const req = await fetch(`${baseUrl}/reviews/delete?id=${id}`, {
-    method: 'DELETE',
+export async function updateReview(reviewId: string, review: Review, token: string): Promise<boolean> {
+  const data = {
+    id: reviewId,
+    content: review.content,
+    images: review.photos,
+    rating: review.rating,
+    reactions: review.reactions,
+    accessibilityFeatures: review.accessibilityFeatures
+  }
+  // make a Post request to the server
+  let req = await fetch(`${baseUrl}/reviews/update`, {
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`
+      'Authorization': `${token}`
+    },
+      body: JSON.stringify(data)
     }
-  })
+  )
+  return req.ok
 }
 
 export async function addAccessibilityFeature(reviewId: string, feature: string, token: string): Promise<boolean> {
@@ -79,9 +91,8 @@ export async function addAccessibilityFeature(reviewId: string, feature: string,
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`
+      'Authorization': `${token}`
     }
   })
   return req.ok
 }
-
